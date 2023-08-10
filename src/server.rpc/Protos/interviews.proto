@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "server.rpc";
+
+package interviews;
+
+import "google/protobuf/timestamp.proto";
+
+
+// The greeting service definition.
+service InterviewBot {
+  // Sends a greeting
+  rpc RegisterAttempt (NewAttemptRequest) returns (AttemptRegistration);
+}
+
+// The request message containing the user's name.
+message NewAttemptRequest {
+  string company = 1;
+  position position = 2;
+  seniority seniority=3;
+  tech tech=4;
+}
+
+enum position {
+  Backend = 0;
+  Frontend = 1;
+  Fullstack = 2;
+}
+
+enum seniority {
+  Junior = 0;
+  Mid = 1;
+  Senior = 2;
+  Lead = 3;
+  Principal = 4;
+  Staff = 5;
+}
+
+enum tech {
+  Csharp = 0;
+  Javascript = 1;
+  Typescript = 2;
+  Rust = 3;
+}
+
+// The response message containing the greetings.
+message AttemptRegistration {
+  google.protobuf.Timestamp date = 1;
+  string id =2;
+}
