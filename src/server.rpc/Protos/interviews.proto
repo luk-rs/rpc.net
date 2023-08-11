@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 
 
 // The greeting service definition.
-service InterviewBot {
+service Interviews {
   // Sends a greeting
   rpc RegisterAttempt (NewAttemptRequest) returns (AttemptRegistration);
 }
@@ -45,6 +45,6 @@ enum tech {
 
 // The response message containing the greetings.
 message AttemptRegistration {
-  google.protobuf.Timestamp date = 1;
-  string id =2;
+  string id = 1;
+  google.protobuf.Timestamp date = 2;
 }
