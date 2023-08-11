@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 
 namespace server.rpc.Services;
 
@@ -13,6 +14,13 @@ public class InterviewsService : Interviews.InterviewsBase
 
     public override Task<AttemptRegistration> RegisterAttempt(NewAttemptRequest request, ServerCallContext context)
     {
-        return base.RegisterAttempt(request, context);
+        var registration = new AttemptRegistration()
+        {
+            Id = $"{Guid.NewGuid()}",
+            Date = Timestamp.FromDateTime(DateTime.UtcNow)
+
+        };
+
+        return Task.FromResult(registration);
     }
 }
