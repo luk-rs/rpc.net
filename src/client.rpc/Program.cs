@@ -1,7 +1,7 @@
 ﻿using Grpc.Net.Client;
 using server.rpc;
 
-var channel = GrpcChannel.ForAddress("https://localhost:7166");
+var channel = GrpcChannel.ForAddress("http://localhost:5000");
 var client = new Interviews.InterviewsClient(channel);
 
 var request = (int idx) => new NewAttemptRequest()
